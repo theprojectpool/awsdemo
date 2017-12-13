@@ -1,7 +1,9 @@
 provider "aws" {
-  region = "eu-west-2"
+  region  = "eu-west-2"
+  profile = "tpp"
 }
 
+/*
 terraform {
   backend "s3" {
     bucket = "tpptfstate"
@@ -9,4 +11,5 @@ terraform {
     region = "eu-west-2"
   }
 }
+*/
 
