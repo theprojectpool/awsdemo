@@ -8,7 +8,7 @@ module "ec2_sheq247_goprojectpool_com" {
   key_name                    = "default"
   monitoring                  = false
   vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
-  subnet_id                   = "subnet-a9311dd2"
+  subnet_id                   = "${module.vpc.public_subnets[0]}"
   associate_public_ip_address = true
 
   root_block_device = [{
@@ -25,5 +25,7 @@ module "ec2_sheq247_goprojectpool_com" {
               wget -qO- https://get.docker.com/ | sh
               mkdir /var/discourse
               git clone https://github.com/discourse/discourse_docker.git /var/discourse
+              cd /var/discourse
+              ./launcher rebuild app
               EOF
 }

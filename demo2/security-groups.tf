@@ -10,14 +10,11 @@ module "tpp_sg" {
 
   ingress_with_cidr_blocks = [
     {
-      from_port   = 8080
-      to_port     = 8090
-      protocol    = "tcp"
-      description = "User-service ports"
-      cidr_blocks = "10.10.0.0/16"
+      rule        = "http-80-tcp"
+      cidr_blocks = "0.0.0.0/0"
     },
     {
-      rule        = "postgresql-tcp"
+      rule        = "https-443-tcp"
       cidr_blocks = "0.0.0.0/0"
     },
   ]
@@ -27,7 +24,7 @@ module "tpp_sg" {
       from_port   = 0
       to_port     = 0
       protocol    = "-1"
-      description = "User-service ports (ipv4)"
+      description = "tpp-service ports (ipv4)"
       cidr_blocks = "0.0.0.0/0"
     },
   ]

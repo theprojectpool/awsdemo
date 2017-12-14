@@ -3,13 +3,12 @@ provider "aws" {
   profile = "tpp"
 }
 
-/*
 terraform {
   backend "s3" {
-    bucket = "tpptfstate"
-    key    = "terraform.tfstate"
+    bucket = "tpp-terraform-state"
+    key    = "tpp/terraform.tfstate"
     region = "eu-west-2"
+    encrypt = "true"
+    profile = "tpp"
   }
 }
-*/
-
