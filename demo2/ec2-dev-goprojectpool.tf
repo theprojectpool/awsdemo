@@ -4,7 +4,7 @@ module "ec2_dev_goprojectpool_com" {
   name = "dev.goprojectpool.com"
 
   ami                         = "ami-fcc4db98"
-  instance_type               = "t2.micro"
+  instance_type               = "t2.small"
   key_name                    = "default"
   monitoring                  = false
   vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
