@@ -3,8 +3,8 @@ module "ec2_sheq247_goprojectpool_com" {
 
   name = "sheq247.goprojectpool.com"
 
-  ami                         = "ami-fcc4db98"
-  instance_type               = "t2.small"
+  ami                         = "${data.aws_ami.ubuntu.id}"
+  instance_type               = "t2.medium"
   key_name                    = "default"
   monitoring                  = false
   vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
