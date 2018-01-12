@@ -18,14 +18,12 @@ module "ec2_dev_goprojectpool_com" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
+    Role = "discourse"
   }
 
   user_data = <<-EOF
               #!/bin/bash
-              wget -qO- https://get.docker.com/ | sh
-              mkdir /var/discourse
-              git clone https://github.com/discourse/discourse_docker.git /var/discourse
-              cd /var/discourse
-              ./launcher rebuild app
+              apt-get update
+              apt-get -y install python
               EOF
 }

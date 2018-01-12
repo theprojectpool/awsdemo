@@ -1,0 +1,7 @@
+virtualenv .venv && source .venv/bin/activate
+pip install -Ur requirements.txt
+
+
+Test
+
+AWS_PROFILE=tpp ./ec2.py --list
