@@ -1,7 +1,7 @@
 module "ec2_sheq247_goprojectpool_com" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "sheq247.goprojectpool.com"
+  name = "sheq247_goprojectpool"
 
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.medium"

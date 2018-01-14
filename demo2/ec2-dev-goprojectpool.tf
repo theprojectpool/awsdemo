@@ -1,7 +1,7 @@
 module "ec2_dev_goprojectpool_com" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "dev.goprojectpool.com"
+  name = "dev_goprojectpool"
 
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.medium"

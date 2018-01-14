@@ -1,7 +1,7 @@
-module "ec2_pioneer_skillinger_com" {
+module "ec2_wpdev_goprojectpool_com" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "pioneer_skillinger"
+  name = "wpdev_goprojectpool"
 
   ami                         = "${data.aws_ami.ubuntu.id}"
   instance_type               = "t2.medium"
@@ -18,7 +18,7 @@ module "ec2_pioneer_skillinger_com" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
-    Role = "discourse"
+    Role = "wordpress"
   }
 
   user_data = <<-EOF

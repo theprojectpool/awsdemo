@@ -1,6 +1,18 @@
 ---
 
-- hosts: all
+- name: Install and setup the environment
+  gather_facts: True
+  hosts: all
+  tasks:
+    - debug: var=hostvars[inventory_hostname]
+
+- name: Install discourse
+  hosts: tag_Role_discourse
   roles:
-    - mongrelion.docker
-    - alekseenkoss77.discourse
+      - octarine.docker
+      - octarine.discourse
+
+- name: Install wordpress
+  hosts: tag_Role_wordpress
+  roles:
+    - octarine.wordpress
