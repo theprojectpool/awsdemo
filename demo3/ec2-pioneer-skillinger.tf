@@ -1,15 +1,15 @@
-module "ec2_host1" {
+module "ec2_pioneer_skillinger_com" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "host1"
+  name = "pioneer_skillinger"
 
-  ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
-  key_name                    = "default"
-  monitoring                  = false
-  vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
-  subnet_id                   = "${module.vpc.public_subnets[0]}"
-  associate_public_ip_address = false
+  ami                     = "${data.aws_ami.ubuntu.id}"
+  instance_type           = "t2.medium"
+  key_name                = "default"
+  monitoring              = false
+  vpc_security_group_ids  = ["${module.tpp_sg.this_security_group_id}"]
+  subnet_id               = "${module.vpc.public_subnets[0]}"
+  disable_api_termination = true
 
   root_block_device = [{
     volume_size = "20"
@@ -19,12 +19,12 @@ module "ec2_host1" {
     Terraform   = "true"
     Environment = "dev"
     Role        = "discourse"
-    Owner       = "Rob"
   }
 
   user_data = <<-EOF
               #!/bin/bash
               apt-get update
               apt-get -y install python
+              apt-get -y install awscli
               EOF
 }

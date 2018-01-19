@@ -10,6 +10,7 @@ module "ec2_wpdev_goprojectpool_com" {
   vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
   subnet_id                   = "${module.vpc.public_subnets[0]}"
   associate_public_ip_address = true
+  disable_api_termination     = true
 
   root_block_device = [{
     volume_size = "20"
@@ -18,7 +19,7 @@ module "ec2_wpdev_goprojectpool_com" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
-    Role = "wordpress"
+    Role        = "wordpress"
   }
 
   user_data = <<-EOF

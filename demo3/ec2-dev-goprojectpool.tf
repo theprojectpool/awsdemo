@@ -3,14 +3,13 @@ module "ec2_dev_goprojectpool_com" {
 
   name = "dev_goprojectpool"
 
-  ami                         = "${data.aws_ami.ubuntu.id}"
-  instance_type               = "t2.medium"
-  key_name                    = "default"
-  monitoring                  = false
-  vpc_security_group_ids      = ["${module.tpp_sg.this_security_group_id}"]
-  subnet_id                   = "${module.vpc.public_subnets[0]}"
-  associate_public_ip_address = true
-  disable_api_termination     = true
+  ami                     = "${data.aws_ami.ubuntu.id}"
+  instance_type           = "t2.medium"
+  key_name                = "default"
+  monitoring              = false
+  vpc_security_group_ids  = ["${module.tpp_sg.this_security_group_id}"]
+  subnet_id               = "${module.vpc.public_subnets[0]}"
+  disable_api_termination = true
 
   root_block_device = [{
     volume_size = "20"
@@ -26,5 +25,6 @@ module "ec2_dev_goprojectpool_com" {
               #!/bin/bash
               apt-get update
               apt-get -y install python
+              apt-get -y install awscli
               EOF
 }
