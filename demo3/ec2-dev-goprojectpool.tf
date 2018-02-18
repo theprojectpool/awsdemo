@@ -20,11 +20,5 @@ module "ec2_dev_goprojectpool_com" {
     Environment = "dev"
     Role        = "discourse"
   }
-
-  user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get -y install python
-              apt-get -y install awscli
-              EOF
+  user_data = "${file("${path.module}/user-data.sh")}"
 }

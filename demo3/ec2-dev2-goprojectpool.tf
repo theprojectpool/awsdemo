@@ -1,7 +1,7 @@
-module "ec2_pioneer_skillinger_com" {
+module "ec2_dev_goprojectpool_com" {
   source = "terraform-aws-modules/ec2-instance/aws"
 
-  name = "pioneer_skillinger"
+  name = "dev_goprojectpool"
 
   ami                     = "${data.aws_ami.ubuntu.id}"
   instance_type           = "t2.medium"
@@ -20,5 +20,11 @@ module "ec2_pioneer_skillinger_com" {
     Environment = "dev"
     Role        = "discourse"
   }
-  user_data = "${file("${path.module}/user-data.sh")}"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              apt-get update
+              apt-get -y install python
+              apt-get -y install awscli
+              EOF
 }

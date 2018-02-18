@@ -20,10 +20,5 @@ module "ec2_wpdev_goprojectpool_com" {
     Environment = "dev"
     Role        = "wordpress"
   }
-
-  user_data = <<-EOF
-              #!/bin/bash
-              apt-get update
-              apt-get -y install python
-              EOF
+  user_data = "${file("${path.module}/user-data.sh")}"
 }
